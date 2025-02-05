@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .switch-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .switch-label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: green;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px green;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Control</h1>
+    <div class="switch-container">
+        <div class="switch-label">LED:</div>
+        <label class="switch">
+            <input id="ledSwitch" type="checkbox" onclick="toggleLED()">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="switch-container">
+        <div class="switch-label">Lock:</div>
+        <label class="switch">
+            <input id="lockSwitch" type="checkbox" onclick="toggleLock()">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <script src="client.js"></script>
+    <script>
+        const ws = new WebSocket('ws://110.238.106.128:80');
+
+        function turnOn() {
+            console.log("Turning on the LED...");
+            ws.send('on');
+        }
+
+        function turnOff() {
+            console.log("Turning off the LED...");
+            ws.send('off');
+        }
+
+        function turnOnlock() {
+            console.log("Turning on the Lock...");
+            ws.send('onlock');
+        }
+
+        function turnOfflock() {
+            console.log("Turning off the Lock...");
+            ws.send('offlock');
+        }
+
+        function toggleLED() {
+            const checkbox = document.querySelector('#ledSwitch');
+            if (checkbox.checked) {
+                turnOn();
+            } else {
+                turnOff();
+            }
+        }
+
+        function toggleLock() {
+            const checkbox = document.querySelector('#lockSwitch');
+            if (checkbox.checked) {
+                turnOnlock();
+            } else {
+                turnOfflock();
+            }
+        }
+    </script>
+</body>
+
+</html>
