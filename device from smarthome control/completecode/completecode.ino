@@ -16,15 +16,15 @@ int dust = 34;
 const int finDeCourse = 5;
 
 // connect with wifi and hhtp and websocket
-const char* ssid = "RD-Team";
-const char* password = "R&D-T3@m";
-const char* serverAddress = "ws.elastic-watch.elastic-solutions.com";
-const int serverPort = 14000;
+const char* ssid = "ssid";
+const char* password = "password";
+const char* serverAddress = "serverAddress";
+const int serverPort = port;
 WebSocketsClient webSocket;
 unsigned long previousMillis = 0;
 const long interval = 300000;  // 1 minute interval (in milliseconds)
-const char* serverUrl = "https://backend.v2.elastic-watch.demo.elastic-solutions.com/api/devices/authenticate";
-const char* serverData = "https://backend.v2.elastic-watch.demo.elastic-solutions.com/api/datacollection/event";
+const char* serverUrl = "serverUrl";
+const char* serverData = "serverData";
 unsigned long doorOpenTime = 0;  // Variable to store the time when the door was opened
 const char* Sound = "";
 //DUST SENSOR
