@@ -2,9 +2,9 @@
 #include <WebSocketsClient.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
-const char* ssid = "RD-Team";
-const char* password = "R&D-T3@m";
-const char* serverAddress = "13.36.113.139";
+const char* ssid = "ssid";
+const char* password = "password";
+const char* serverAddress = "serverAddress";
 const int serverPort = 4000;
 
 WebSocketsClient webSocket;
@@ -13,8 +13,8 @@ const int lockPin = 4;
 const int pompePin = 16;
 const int moteurPin = 17;
 const int finDeCourse = 5;
-const char* serverUrl = "https://backend.v2.elastic-watch.demo.elastic-solutions.com/api/devices/authenticate";
-const char* serverData = "https://backend.v2.elastic-watch.demo.elastic-solutions.com/api/datacollection/event";
+const char* serverUrl = "serverUrl";
+const char* serverData = "serverData";
 
 String jsonStr; 
 String tokenString;
